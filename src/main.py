@@ -8,8 +8,8 @@ from passlib.context import CryptContext
 from jose import JWTError, jwt
 import os
 from datetime import datetime, timedelta
-from config.db_connect import engine
-from models import User, UserCreate, UserProfile, Flower, FlowerCreate, FlowerResponse, Purchase, PurchaseResponse
+from .config.db_connect import engine
+from .models import User, UserCreate, UserProfile, Flower, FlowerCreate, FlowerResponse, Purchase, PurchaseResponse
 
 SECRET_KEY = "secret"
 ALGORITHM = "HS256"

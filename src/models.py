@@ -30,11 +30,11 @@ class PurchaseResponse(BaseModel):
     name: str
     price: float
 
-class User(UserCreate, SQLModel, table=True):
+class User(UserCreate, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     profile_picture: Optional[str] = None
 
-class Flower(FlowerCreate, SQLModel, table=True):
+class Flower(FlowerCreate, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
 
 class Purchase(SQLModel, table=True):
