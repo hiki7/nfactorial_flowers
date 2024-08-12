@@ -3,7 +3,7 @@ from typing import List, Optional
 from sqlmodel import SQLModel, Field, Session, create_engine, select
 
 
-class UserCreate(BaseModel):
+class UserCreate(SQLModel):
     username: str
     password: str
 
@@ -12,7 +12,7 @@ class UserProfile(BaseModel):
     username: str
     profile_picture: Optional[str]
 
-class FlowerCreate(BaseModel):
+class FlowerCreate(SQLModel):
     name: str
     price: float
 
@@ -30,16 +30,12 @@ class PurchaseResponse(BaseModel):
     name: str
     price: float
 
-class User(SQLModel, table=True):
+class User(UserCreate, SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    username: str = Field(index=True, unique=True)
-    password: str
     profile_picture: Optional[str] = None
 
-class Flower(SQLModel, table=True):
+class Flower(FlowerCreate, SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    name: str = Field(index=True)
-    price: float
 
 class Purchase(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
